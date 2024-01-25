@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNetCore.Identity;
+
+@model IEnumerable<ApplicationUser>
+@{
+    ViewData["Title"] = "Users List";
+}
+
+
+
+<div class="container-Shopping-Cart">
+
+    <bodyCart>
+
+        <h2 class="roundedBorderTextYellow">List of all users</h2>
+        <div class="row">
+            <div class="col-md-6 offset-3">
+                
+
+                <table class="table">
+                    <thead>
+                        <tr class="text-center">
+                            <th>@Html.DisplayNameFor(model => model.UserName)</th>
+                            <th>@Html.DisplayNameFor(model => model.Email)</th>
+                            <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+                            <th>@Html.DisplayNameFor(model => model.City)</th>
+                            <th>@Html.DisplayNameFor(model => model.Country)</th>
+                            <th>@Html.DisplayNameFor(model => model.PostacCode)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                           
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.UserName)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.Email)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.City)
+                                </td>
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.Country)
+                                </td>      
+                                <td class="align-middle">
+                                    @Html.DisplayFor(modelItem => item.PostacCode)
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+            </div>
+        </div>
+    </bodyCart>
+
+</div>

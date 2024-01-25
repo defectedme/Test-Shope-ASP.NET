@@ -1,0 +1,69 @@
+﻿@model IEnumerable<ShopProduct>
+@{
+    ViewData["Title"] = "List of Motorbikes";
+}
+
+
+
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+        <div class="col-md-4 col-xs-6 border-primary mb-3">
+            <div class="card mb-3 transparent" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-12">
+                        <div class="card-header text-white bg-info">
+                            <p class="card-text">
+                                <h5 class="card-title">
+                                    @item.Name
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                 {
+                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                                    }
+                                </h5>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <img src="@item.UrlPicture" height="120" width="150" alt="@item.Name">
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card-body">
+                            <p class="card-text">@item.Description</p>
+                            <p class="card-text"><b>Product: </b>@item.Name</p>
+                            @*         <p class="card-text"><b>Category: </b>@item.MovieCategory</p>
+                        <p class="card-text"><b>Start Date: </b>@item.StartDate.ToString("dd MMM yy")</p>
+                        <p class="card-text"><b>End Date: </b>@item.EndDate.ToString("dd MMM yy")</p>*@
+                            <p class="card-text ">
+                                <b>Status: </b>
+
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card-footer ">
+                            <p class="card-text">
+                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
+                                    <i class="bi bi-eye-fill"></i> Show Details
+                                </a>
+                                <a asp-controller="ShopCart"
+                               asp-action="AddToCart"
+                               asp-route-id="@item.Id">
+                                    <i class="bi bi-cart-plus"></i> Add to Cart (Price @item.Price.ToString("c"))
+
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        <input value="Back to List" onclick="location.href='@Url.Action("Index", "ShopeCategory")'" class="btn btn-primary" />
+    </div>
+</div>
+

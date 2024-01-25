@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Test_Shope_ASP.NET.Models.ShopProduct>
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete McGear</h1>
+
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="row detailsFrame imputFrame">
+
+    <div >
+
+        <h1>Details</h1><br>
+        @foreach (var item in Model)
+        {
+
+            <form onSubmit=formSubmit(event)>
+                Product Name:<br>
+                @item.Name<br>
+                <br>
+                Description:<br>
+                @item.Description<br>
+                <br>
+                Color:<br>
+                @item.Color<br>
+                <br>
+                Price:<br>
+                @item.Price<br>
+                <br>
+                <img src="@item.UrlPicture" height="300" width="300" alt="@item.Name" loading="lazy">
+
+          
+
+            </form>
+            using (Html.BeginForm("Delete", "ShopMcGear"))
+            {
+                <input type="hidden" name="Id" value=@item.Id />
+                <input class="btn btn-danger" type="submit" value="Delete" />
+            }
+
+      
+        }
+
+    </div>
+</div>
+
+
+<div class="form-group">
+    <input value="Back to category" onclick="location.href='@Url.Action("Index", "ShopMcGear")'" class="btn btn-primary" />
+</div>
+</>

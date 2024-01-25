@@ -1,0 +1,136 @@
+﻿@using System.Globalization;
+
+@model Test_Shope_ASP.NET.Models.Shop.CartElements
+
+
+<div class="container-Shopping-Cart">
+
+    <bodyCart>
+
+        <h2 class="roundedBorderTextYellow">Check Out</h2>
+        <div>
+            <table class="form-group">
+                <tr>
+
+                    <th>
+                        Name
+                    </th>
+
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Quantity
+                    </th>
+
+                    <th>
+                        Subtotal
+                    </th>
+
+                    <th></th>
+                </tr>
+                @foreach (var item in Model.ShopCartItemModel)
+                {
+
+                    <tr>
+                        <td>
+                            <a asp-action="Details" asp-controller="ShopeAllProducts" asp-route-id="@item.IdProduct">@item.ShopProduct.Name</a>
+                        </td>
+
+                        <td>
+                            @String.Format("{0:C}", item.ShopProduct.Price).ToString()
+
+
+                        </td>
+
+                        <td>
+                            @String.Format("{0:F}", item.Quantity)
+                        </td>
+
+                        <td class="align-middle">@((item.Quantity * item.ShopProduct.Price).ToString("c"))</td>
+                        <td class="align-middle">
+                        <td>
+                            <a class="text-danger" asp-controller="ShopCart" asp-action="DeleteFromCart"
+                           asp-route-id="@item.ShopProduct.Id">
+                                <i class="bi bi-cart-dash"></i>
+                            </a>
+                            <a class="text-success" asp-controller="ShopCart" asp-action="AddToCart"
+                           asp-route-id="@item.ShopProduct.Id">
+                                <i class="bi bi-cart-plus"></i>
+                            </a>
+
+
+
+
+
+                        </td>
+
+                    </tr>
+                }
+            </table>
+            <br />
+            <h4>Total:@String.Format("{0:F}", Model.Total) </h4>
+      
+
+            <input class="btn btn-danger" type="button" value="ClearALL" onclick="location.href='@Url.Action("ClearBasket", "ShopCart")'" />
+            <br />
+            <br />
+     
+@*            <input class="btn btn-danger" type="button" value="Check Out" onclick="location.href='@Url.Action("Dane", "ShopOrder")'" />
+*@
+        </div>
+
+
+
+        <div class="container-PayPal">
+            <div id="paypal-button-container"></div>
+        </div>
+
+
+        @section Scripts {
+            @*Use ViewBag.ClientId to load Paypal Javascript SDK*@
+            <script src="https://www.paypal.com/sdk/js?client-id=sb"></script>
+
+            <script>
+                paypal.Buttons({
+                    style: {
+                        layout: 'vertical',
+                        color: 'silver',
+                        tagline: 'false'
+                    },
+                    createOrder: (data, actions) => {
+                        return fetch("@Url.Action("Order")", {
+
+
+                            method: "post",
+                        }).then((response) => {
+                            if (!response.ok) {
+                                return response.json().then(error => { throw error; });
+                            }
+
+                            return response.json();
+                        }).then((order) => order.id)
+                            .catch(error => alert(error.message));
+                    },
+                    onApprove: (data, actions) => {
+                        return fetch(`@Url.Action("Capture")?orderId=${data.orderID}`, {
+                            method: "post",
+                        }).then((response) => {
+                            if (!response.ok) {
+                                return response.json().then(error => { throw error; });
+                            }
+
+                            window.location.href = "@Url.Action("Success")";
+                        }).catch(error => alert(error.message));
+                    }
+                }).render('#paypal-button-container');
+            </script>
+        }
+
+
+
+
+
+    </bodyCart>
+
+</div>

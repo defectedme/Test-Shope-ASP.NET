@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Test_Shope_ASP.NET.Models.ShopeCategory>
+
+<link rel="stylesheet" href="~/css/mycolors.css">
+<link rel="stylesheet" href="/css/site.css" />
+<link rel="stylesheet" href="/style/style.css">
+
+@{
+    ViewData["Title"] = "Category";
+}
+
+<h1 class="roundedBorderTextYellow">CATEGORY</h1>
+
+
+
+@*<thead>
+    <tr class="text-center">
+        <th>@Html.DisplayNameFor(model => model.ImagePath)</th>
+        <th>@Html.DisplayNameFor(model => model.Name)</th>
+
+
+    </tr>
+</thead>*@
+
+@foreach (var item in Model)
+{
+
+
+    if (item.Name == "Gears")
+    {
+        <td>
+            <h1 class="roundedBorderTextAzure">@Html.DisplayFor(modelItem => item.Name)</h1>
+
+            <input class="flex-containerPicture" type="image" src="@item.ImagePath" @*src="~/css/image/MotorbikeGearXLa.jpg"*@ alt="Submit" onclick="location.href='@Url.Action("Index", "ShopMcGear")'">
+
+
+        </td>
+
+
+    }
+    if (item.Name == "Tools")
+    {
+
+        <td>
+            <h1 class="roundedBorderTextAzure">@Html.DisplayFor(modelItem => item.Name)</h1>
+            <input class="flex-containerPicture" type="image" src="@item.ImagePath" @*src="~/css/image/motorbiketoolsXLa.jpg"*@ alt="Submit" onclick="location.href='@Url.Action("Index", "ShopTools")'">
+
+        </td>
+
+    }
+    if (item.Name == "Motorbike")
+    {
+        <td>
+            <h1 class="roundedBorderTextAzure">@Html.DisplayFor(modelItem => item.Name)</h1>
+
+            <input class="flex-containerPicture" type="image" src="@item.ImagePath" @*src="~/css/image/motorbikexla.jpg"*@ alt="Submit" onclick="location.href='@Url.Action("Index", "ShopMotorbike")'">
+
+        </td>
+
+    }
+
+
+
+}
+

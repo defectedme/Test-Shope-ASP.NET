@@ -1,0 +1,26 @@
+﻿@model ShopOrder
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+
+<div class="row">
+    <form asp-action="Checkout" method="post">
+        <div>
+            <input asp-for="LastName" />
+        </div>
+
+        <div>
+            <input asp-for="Name" />
+        </div>
+        <div>
+            <input asp-for="Total" />
+        </div>        
+        <div>
+            <input asp-for="Email" />
+        </div>       
+
+    </form>
+
+</div>

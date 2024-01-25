@@ -1,0 +1,80 @@
+﻿@model IEnumerable<Test_Shope_ASP.NET.Models.ShopProduct>
+@{
+    ViewData["Title"] = "EditMcGear";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+<h1>Edit Products McGear</h1>
+
+<div class="row detailsFrame imputFrame">
+    <div class="formContainer">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        @foreach (var item in Model)
+        {
+            <form method="post" asp-action="Edit">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="shopProduct.id" value="@item.Id" />
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => item.Name)
+                    <input type="text" name="shopProduct.Name" value="@item.Name" />
+                    @Html.ValidationMessageFor(modelItem => item.Name)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => item.Color)
+                    <input type="text" name="shopProduct.Color" value="@item.Color" />
+                    @Html.ValidationMessageFor(modelItem => item.Color)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => item.Description)
+                    <input type="text" name="shopProduct.Description" value="@item.Description" />
+                    @Html.ValidationMessageFor(modelItem => item.Description)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => item.Price)
+                    <input type="text" name="shopProduct.Price" value="@item.Price" />
+                    @Html.ValidationMessageFor(modelItem => item.Price)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(modelItem => item.UrlPicture)
+                    <input type="text" name="shopProduct.UrlPicture" value="@item.UrlPicture" />
+                    @Html.ValidationMessageFor(modelItem => item.UrlPicture)
+                </div>
+                <img src="@item.UrlPicture" height="100" width="150" alt="@item.Name">
+
+
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+
+
+        }
+    </div>
+</div>
+@if (User.Identity.IsAuthenticated)
+{
+
+    @foreach (var item in Model)
+    {
+
+
+@*        <a class="btn btn-primary" asp-action="edit" asp-route-id="@item?.Id">edit</a>
+*@        <a class="btn btn-danger" asp-action="delete" asp-route-id="@item?.Id">delete</a>
+        <a class="btn btn-primary" asp-action="create" asp-route-id="@item?.Id">create</a>
+    }
+
+
+
+}
+<div>
+    <br />
+    <div class="form-group">
+        <input value="Back to List" onclick="location.href='@Url.Action("Index", "ShopMcGear")'" class="btn btn-primary" />
+    </div>
+
+</div>
+

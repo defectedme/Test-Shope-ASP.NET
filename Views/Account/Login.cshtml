@@ -1,0 +1,24 @@
+﻿@model Test_Shope_ASP.NET.Models.Login
+
+
+<div class="row imputFrame">
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+
+    {
+
+        <div class="formContainer">
+
+            <h1>Login</h1><br>
+
+            <form onSubmit=formSubmit(event)>
+                User Name:<br>
+                @Html.TextBoxFor(x => x.UserName)<br>
+                User Password:<br>
+                @Html.PasswordFor(x => x.Password)<br>
+                <br>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    }
+
+</div>

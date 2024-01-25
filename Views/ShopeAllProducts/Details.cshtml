@@ -1,0 +1,48 @@
+﻿@model ShopProduct
+@{
+    ViewData["Title"] = "Details";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+<h1>Details</h1>
+
+<div>
+    <h4>Categories</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="roundedBorderTextYellow">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="roundedBorderTextYellow">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Color)
+        </dt>
+        <dd class="roundedBorderTextYellow">
+            @Html.DisplayFor(model => model.Color)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="roundedBorderTextYellow">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<div>
+
+    <div class="form-group">
+        <input value="Back to List" onclick="location.href='@Url.Action("Index", "ShopeCategory")'" class="btn btn-primary" />
+    </div>
+</div>

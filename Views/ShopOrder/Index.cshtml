@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Test_Shope_ASP.NET.Models.ShopOrderItem>
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdOrderItem)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in  Model) {
+        <tr>
+            <td>
+                    @Html.DisplayFor(modelItem => item.IdOrderItem)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.Total)
+            </td>
+  
+@*
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdOrder">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdOrder">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdOrder">Delete</a>
+            </td>*@
+        </tr>
+}
+    </tbody>
+</table>
+@section Scripts {
+    @{
+        //await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+    }
+}

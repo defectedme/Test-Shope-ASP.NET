@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Test_Shope_ASP.NET.Models.ShopProduct>
+@{
+    ViewData["Title"] = "DetailsMotorbike";
+}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+
+<div class="row detailsFrame imputFrame">
+
+    <div class="formContainer">
+
+        <h1>Details</h1><br>
+        @foreach (var item in Model)
+        {
+
+            <form onSubmit=formSubmit(event)>
+                Product Name:<br>
+                @item.Name<br>
+                <br>
+                Description:<br>
+                @item.Description<br>
+                <br>
+                Color:<br>
+                @item.Color<br>
+                <br>
+                Price:<br>
+                @item.Price<br>
+                <br>
+                <img src="@item.UrlPicture" height="300" width="300" alt="@item.Name" loading="lazy">
+
+            </form>
+        }
+    </div>
+</div>
+<div>
+
+    <div class="form-group">
+        <input value="Back to List" onclick="location.href='@Url.Action("Index", "ShopMotorbike")'" class="btn btn-primary" />
+    </div>
+</div>

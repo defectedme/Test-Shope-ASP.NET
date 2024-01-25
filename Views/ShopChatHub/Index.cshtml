@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ApplicationUser>
+@using Microsoft.AspNetCore.Identity;
+@inject UserManager<ApplicationUser> UserManager;
+@{
+    ViewData["Title"] = "Chat";
+}
+
+<h5>
+    <img src="~/css/image/icons/chat-box.png" />ChatMe
+</h5>
+
+<div id="chatbox-history" class="container" style="border-color:blueviolet">
+    <form id="send-form" action="#">
+
+        <div id="messages">
+            <div style="background-image:url('/css/image/icons/wallChatLight.jpg')" ;>
+
+                <ul id="messagesList"></ul>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+<div class="container">
+    <form id="send-form" action="#">
+        <div class="form-group">
+            <div class="input-group">
+
+                <label class="textAlign" style="background-color:white ; height:auto; display:inline-block; margin-right: 10px" id="userInput">  From: @UserManager.GetUserName(User) </label>
+
+                <label class="textAlign" style="background-color:lightyellow ; height:auto; display:inline-block; ">  Send To :  </label>
+           
+                <select id="receiverInput" name="UserName">
+                    <option value="0">Please select</option>
+                    <option value="1">Send to All</option>
+                    @foreach (ApplicationUser fruit in Model)
+                    {
+                        <option value="@fruit.UserName">@fruit.UserName</option>
+                    }
+                </select>
+
+
+                <input type="text" id="messageInput" class="form-control" />
+                <div class="form-group">
+                    <input type="button" id="sendButton" value="Send Message" class="btn btn-primary" />
+                </div>
+@*
+                <div class="form-group">
+                    <input value="Send Email to Us" onclick="location.href='@Url.Action("EmailRequest", "ShopChatHub")'" class="btn btn-primary" />
+                </div>*@
+            </div>
+
+        </div>
+    </form>
+</div>
+
+
+<script src="~/js/signalr/dist/browser/signalr.js"></script>
+<script src="~/js/chat.js"></script>
+
+
+
+<form id="Form1"
+    defaultbutton="SubmitButton"
+    runat="server"/>

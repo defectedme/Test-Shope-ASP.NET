@@ -1,0 +1,50 @@
+﻿@model ApplicationUser
+@using Microsoft.AspNetCore.Identity;
+
+
+
+<h1>My Account</h1>
+@Html.ValidationSummary()
+
+<div class="row detailsFrame imputFrame">
+    <div class="formContainer">
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <label asp-for="FullName" class="control-label"></label>
+            <input asp-for="FullName" class="form-control" />
+
+            <label asp-for="Address" class="control-label"></label>
+            <input asp-for="Address" class="form-control" />
+
+            <label asp-for="City" class="control-label"></label>
+            <input asp-for="City" class="form-control" />
+
+            <label asp-for="Country" class="control-label"></label>
+            <input asp-for="Country" class="form-control" />
+
+
+            <label asp-for="PostacCode" class="control-label"></label>
+            <input asp-for="PostacCode" class="form-control" />
+
+            <label asp-for="Email" class="control-label"></label>
+            <input asp-for="Email" class="form-control" />
+
+            <label asp-for="PhoneNumber" class="control-label"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+
+@*             <label asp-for="Password" class="control-label"></label>
+            <input asp-for="Password" class="form-control" />
+
+            <label asp-for="ConfirmPassword" class="control-label"></label>
+            <input asp-for="ConfirmPassword" class="form-control" />*@
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+
+
+        </form>
+    </div>
+</div>

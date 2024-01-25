@@ -1,0 +1,69 @@
+﻿@model Test_Shope_ASP.NET.Models.Register
+
+<div class="row imputFrame">
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+
+    {
+
+        <div class="formContainer">
+
+            <h1>Sign Up</h1><br>
+@*            @Html.ValidationSummary()
+*@
+            <form onSubmit=formSubmit(event)>
+                Full name:<br>
+                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.FullName)<br>
+
+                User Name:<br>
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.UserName)<br>
+
+                Address:<br>
+                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.Address)<br>
+
+
+                City:<br>
+                @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.City)<br>
+
+                Country:<br>
+                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.Country)<br>
+
+
+                Post Code:<br>
+                @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.PostCode)<br>
+
+                
+                Password:<br>
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                @Html.PasswordFor(x => x.Password)<br>
+
+
+
+
+                ConfirmPassword:<br>
+                @Html.ValidationMessageFor(model => model.ConfirmPassword, "", new { @class = "text-danger" })
+                @Html.PasswordFor(x => x.ConfirmPassword)<br>
+
+                Email:<br>
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.Email)<br>
+
+                Phone Number:<br>
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(x => x.PhoneNumber)<br>
+
+
+
+
+                <br>
+                <button type="submit">Register</button>
+            </form>
+        </div>
+    }
+</div>
+

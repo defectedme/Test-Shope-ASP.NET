@@ -1,0 +1,83 @@
+﻿@model ShopOrder
+
+@{
+    ViewData["Title"] = "Order Details";
+    //Layout = "~/Views/Shared/_KoszykLayout.cshtml";
+}
+
+
+<div class="container-Shopping-Cart">
+
+    <bodyCart>
+
+        <h2 class="roundedBorderTextYellow">Order Details</h2>
+        <div>
+            <div>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.DateOfOrder)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.DateOfOrder)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Name)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Name)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.LastName)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.City)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.City)
+                    </dd>
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Country)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Country)
+                    </dd>
+
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.PostCode)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.PostCode)
+                    </dd>
+                    <dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Total)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Total)<a>$</a>
+                    </dd>
+                </dl>
+            </div>
+            <div>
+                @*    <a asp-action="Edit" asp-route-id="@Model?.IdOrder">Edit</a> |
+                *@    
+                
+                <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            </div>
+
+        </div>
+
+       
+
+    </bodyCart>
+
+</div>
+   
+
+
+
+
+

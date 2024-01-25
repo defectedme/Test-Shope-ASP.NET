@@ -1,0 +1,32 @@
+﻿@model ShopProduct
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Categories</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="roundedBorderTextYellow">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category_Id)
+        </dt>
+        <dd class="roundedBorderTextYellow">
+            @Html.DisplayFor(model => model.Category_Id)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
+    <div class="form-group">
+        <input value="Back to category" onclick="location.href='@Url.Action("Index", "ShopeCategory")'" class="btn btn-primary" />
+    </div>
+</div>

@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Test_Shope_ASP.NET.Models.ShopProduct>
+
+
+@{
+    ViewData["Title"] = "Motorbike";
+}
+
+<h1 class="roundedBorderTextYellow">Motorbike</h1>
+
+
+<table class="table white-center">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.UrlPicture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="align-middle">
+                    <img class="rounded-circle" src="@item.UrlPicture" alt="@item.Name" style="max-width: 150px" />
+                </td>
+         
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td class="align-middle">
+                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i>Edit </a> |
+                    <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye"></i>Details </a> |
+                    <a class="btn btn-danger text-white" asp-action="Delete" asp-route-id="@item.Id"><i class="bi bi-trash"></i>Delete </a>
+                </td>
+
+            </tr>
+
+
+        }
+    </tbody>
+</table>
+
+
+
